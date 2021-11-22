@@ -5,12 +5,10 @@ from random import choice
 import os
 # import replit
 from short import short
-from articloid import ko_srt, srt
+from articloid import ko_srt, srt, counting_star, gold_axe, narcissus
 from long import def_anthem, long
 
-global Nwinput
-
-red = '\033[31m'
+# global Nwinput
 
 lan = 'ko'
 
@@ -70,11 +68,11 @@ def Word(previous, n, nxt, Pinput):
 def Start():
 
     print(" \033[31m 고르시오 \033[0m ")
-    print("1. 낱말 연습")
-    print("2. 짧은글 연습")
-    print("3. 긴글 연습")
-    print("4. 언어 선택")
-    print(f"현재 언어 : {lan}")
+    print("1. 낱말")
+    print("2. 짧은글")
+    print("3. 긴글")
+    print("4. \033[33/m언어 선택\033[0m")
+    print(f"\033[36m----------------\033[0m\n현재 언어 : {lan}")
 
     a = input()
 
@@ -147,17 +145,37 @@ def long_choice(lan):
     if lan == 'ko':
         print('1. 애국가')
         print('2. 별 헤는 밤')
+        print('3. 금도끼')
 
         long_ipt = input('\n==========\n숫자 입력 : ')
 
         match long_ipt:
             case '1':
-                def_anthem(1, lan)
+                os.system('cls')
+                def_anthem(1)
             case '2':
-                long(1, lan)
+                os.system('cls')
+                long(1, lan, counting_star)
+            case '3':
+                os.system('cls')
+                long(1, lan, gold_axe)
             case _:
-                print("1, 2 만 가능")
+                print("1, 2, 3 만 가능")
                 long_choice(lan)
+
+    if lan == 'en':
+        print('1. 양치기 소년')
+
+        long_ipt = input('\n==========\n숫자 입력 : ')
+
+        match long_ipt:
+            case '1':
+                os.system('cls')
+                long(1, lan, narcissus)
+            case _:
+                print("1 만 가능")
+                long_choice(lan)
+
 
 
 
