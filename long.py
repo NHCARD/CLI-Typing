@@ -10,10 +10,14 @@ from hgtk.text import decompose
 
 from time import time
 
-def an_previous(list1, original):
+def an_previous(list1, original, classify, page_num, line_num):
     # noinspection SpellCheckingInspection
+    if classify == 'long':
+        print(f"================ {line_num + 1} / {page_num} ================")
+
     for j in range(len(list1)):
         # print(len(list1))
+
         print(f'\033[36m{original[j]}\033[0m')
         # print(f'list1: {list1}')
 
@@ -26,7 +30,7 @@ def an_previous(list1, original):
 
         print('')
 
-def def_anthem(num, lan):
+def def_anthem(num):
 
     global etime
     if num == 1:
@@ -53,7 +57,7 @@ def def_anthem(num, lan):
 
                     if i == 1 or 2 or 3:
 
-                        an_previous(list1, national_anthem)
+                        an_previous(list1, national_anthem, 'anthem', '', '')
 
                         print(f'\033[36m{national_anthem[i]}\033[0m')
                         ipt = input()
@@ -64,7 +68,7 @@ def def_anthem(num, lan):
                         # replit.clear()
                         os.system('cls')
 
-                        an_previous(list1, national_anthem)
+                        an_previous(list1, national_anthem, 'anthem', '', '')
                         print('------------------------')
 
         cor_count = 0
@@ -89,13 +93,15 @@ def def_anthem(num, lan):
 def long(num, lan):
 
     if num == 1:
-        length = (len(counting_star[1]) // 20) + 1
+        length = (len(counting_star[1]) // 22) + 1
         page_num = length // 4
 
         cor_count = 0
         total_cor = 0
         total_len = 0
         line_length = 0
+
+        line_num = 0
 
 
         print(counting_star[0])
@@ -114,36 +120,41 @@ def long(num, lan):
             elif counting_star[0][i:i+1] != title_ipt[i:i+1]:
                 print(f'\033[31m{title_ipt[i:i+1]}\033[0m', end='')
 
-        print(f"\n================ 1 / {page_num} ================")
+        print('')
+
+        # print(f"\n================ 1 / {page_num} ================")
 
         list1 = []
         original1 = []
 
         line_stime = time()
-        print(line_stime)
 
         for i in range(length):
 
             if i % 4 == 0 and i != 0:
                 line_stime = time()
-                print(line_stime)
+                # print(line_stime)
 
             original = counting_star[1][i*22:i*22+22]
 
-            print(counting_star[1][i*22:i*22+22], i)
+            if i == 0:
+                print(f"================ {line_num + 1} / {page_num} ================")
+
+            print(f'\033[36m{counting_star[1][i*22:i*22+22]}\033[0m')
             ipt = input()
             original1.append(original)
             list1.append(ipt)
             # print(original1)
             # print(list1)
 
-
             os.system('cls')
-            an_previous(list1, original1)
+            an_previous(list1, original1, 'long', page_num, line_num)
             cor_count += correct(counting_star[1][i*22:i*22+22], ipt, lan)
             line_length += len(decompose(counting_star[1][i*22:i*22+22], compose_code=''))
 
-            print(f"\n================ 1 / {page_num} ================")
+
+
+            # print(f"\n================ 1 / {page_num} ================")
 
             if i % 4 == 3:
                 print("========================================================")
@@ -164,6 +175,7 @@ def long(num, lan):
                 total_time += line_etime
                 total_spd = (total_cor-i) / total_len * 60
 
+                line_num += 1
 
                 while 1:
 
@@ -184,8 +196,10 @@ def long(num, lan):
                 list1 = []
                 original1 = []
 
-                # os.system('cls')
-                print(f"================ {i%2} / {page_num} ================")
+                os.system('cls')
+
+                if i <= page_num:
+                    print(f"================ {line_num + 1} / {page_num} ================")
 
 
 
