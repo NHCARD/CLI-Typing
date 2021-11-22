@@ -201,9 +201,6 @@ def long(num, lan):
                 if i <= page_num:
                     print(f"================ {line_num + 1} / {page_num} ================")
 
-
-
-
 # def_anthem(1)
 
 long(1, 'ko')
