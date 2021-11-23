@@ -17,9 +17,6 @@ def Word(previous, n, nxt, Pinput):
 
     while 1:
 
-        if keyboard.read_key() == '1':
-            return 1
-
         print('=====================================')
 
         print('previous        now        next')
