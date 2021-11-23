@@ -132,7 +132,7 @@ def Start(): # 메인
 
                 lan_choice() # 언어 선택 함수 호출
             case '5': # 입력값이 5일때 메인 실행파일 호출하고 파이썬 파일 종료
-                os.system("C:\\Users\\inuri64\\source\\repos\\ConsoleApplication1\\x64\\Release\\ConsoleApplication1.exe")
+                os.system("C:\\Users\\inuri64\\source\\repos\\final\\x64\Release\\final.exe")
                 break
             case _: # 1, 2, 3, 4, 5를 제외한 나머지를 입력한 경우
                 # replit.clear()
