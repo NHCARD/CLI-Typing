@@ -1,6 +1,7 @@
 import os
 
 # import replit
+import keyboard
 
 from short import correct
 
@@ -87,6 +88,11 @@ def def_anthem(num):
         print(f"속도 : {spd:.1f}")
 
         print(f'정확도 : {cor_per:.1f}%')
+
+        print('메뉴로 돌아가려면 엔터키를 누르시오')
+        while 1:
+            if keyboard.read_key() == 'enter':
+                break
 
 def long(num, lan, title):
 
@@ -175,17 +181,27 @@ def long(num, lan, title):
                         sleep(2)
                         os.system('cls')
                         end(total_time, total_cor, total_len, total_spd, i)
-                        return
+
+                        print('메뉴로 돌아가려면 엔터키를 누르시오')
+                        while 1:
+                            if keyboard.read_key() == 'enter':
+                                break
 
                     # print(ques)
 
                     if ques == '1':
                         cor_count = 0
                         os.system('cls')
+
                         break
                     elif ques == '2':
                         os.system('cls')
                         end(total_time, total_cor, total_len, total_spd, i)
+
+                        print('메뉴로 돌아가려면 엔터키를 누르시오')
+                        while 1:
+                            if keyboard.read_key() == 'enter':
+                                break
                         return
 
                 list1 = []

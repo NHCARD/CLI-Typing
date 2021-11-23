@@ -7,6 +7,7 @@ import os
 from short import short
 from articloid import ko_srt, srt, counting_star, gold_axe, narcissus, Word, ko_Word
 from long import def_anthem, long
+import ctypes
 
 # global Nwinput
 
@@ -79,65 +80,67 @@ def word(previous, n, nxt, Pinput):
 
 def Start():
 
-    print(" \033[31m 고르시오 \033[0m ")
-    print("1. 낱말")
-    print("2. 짧은글")
-    print("3. 긴글")
-    print("4. \033[33/m언어 선택\033[0m")
-    print(f"\033[36m----------------\033[0m\n현재 언어 : {lan}")
+   while 1:
+        print(" \n\033[31m 고르시오 \033[0m ")
+        print("1. 낱말")
+        print("2. 짧은글")
+        print("3. 긴글")
+        print("4. \033[33/m언어 선택\033[0m")
+        print('\n5. 종료')
+        print(f"\033[36m----------------\033[0m\n현재 언어 : {lan}")
 
-    a = input()
+        a = input()
 
-    match a:
-        case '1':
-            print('낱말 선택')
-            sleep(1.5)
+        match a:
+            case '1':
+                print('낱말 선택')
+                sleep(1.5)
 
-            # replit.clear()
-            os.system('cls')
-
-            if lan == 'ko':
-                word('', choice(ko_Word), choice(ko_Word), '')
-            elif lan == 'en':
-                word('', choice(Word), choice(Word), '')
-        case '2':
-            print('짧은글 선택')
-
-            sleep(1.5)
-
-            if lan == "ko":
                 # replit.clear()
                 os.system('cls')
-                short(choice(ko_srt), 'ko')
 
-            elif lan == "en":
+                if lan == 'ko':
+                    word('', choice(ko_Word), choice(ko_Word), '')
+                elif lan == 'en':
+                    word('', choice(Word), choice(Word), '')
+            case '2':
+                print('짧은글 선택')
+
+                sleep(1.5)
+
+                if lan == "ko":
+                    # replit.clear()
+                    os.system('cls')
+                    short(choice(ko_srt), 'ko')
+
+                elif lan == "en":
+                    # replit.clear()
+                    os.system('cls')
+                    short(choice(srt), 'en')
+
                 # replit.clear()
                 os.system('cls')
-                short(choice(srt), 'en')
+            case '3':
+                print('긴글 선택')
 
-            # replit.clear()
-            os.system('cls')
-        case '3':
-            print('긴글 선택')
+                sleep(1.5)
+                os.system('cls')
+                long_choice(lan)
+            case '4':
+                os.system('cls')
+                # replit.clear()
 
-            sleep(1.5)
-            os.system('cls')
-            long_choice(lan)
-        case '4':
-            os.system('cls')
-            # replit.clear()
-
-            lan_choice()
-
-        case _:
-            # replit.clear()
-            os.system('cls')
-            print("\033[31m1, 2, 3, 4중 선택\033[0m")
-            Start()
+                lan_choice()
+            case '5':
+                os.system("C:\\Users\\inuri64\\source\\repos\\ConsoleApplication1\\x64\\Release\\ConsoleApplication1.exe")
+            case _:
+                # replit.clear()
+                os.system('cls')
+                print("\033[31m1, 2, 3, 4중 선택\033[0m")
+                Start()
 
 def lan_choice():
-    # replit.clear()
-    os.system('cls')
+    # replit.clear()    os.system('cls')
 
     print("4) \033[32m언어 선택\033[0m\n")
     print("1. Ko")

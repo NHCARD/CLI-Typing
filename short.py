@@ -1,9 +1,12 @@
 import os
-from time import time
+import random
+from time import time, sleep
 
 # import replit
 # import keyboard
+import keyboard
 from hgtk.text import decompose
+from articloid import srt, ko_srt
 
 
 def correct(short, ipt, lan):
@@ -25,52 +28,46 @@ def correct(short, ipt, lan):
             if short[i:i+1] == ipt[i:i+1]:
                 cor_count += 1
 
-    return cor_count
+    return cor_count-1
 
+def red(short, ipt):
 
+    print(short)
 
-def short(now_short, lan):
-    print("=========================================")
-    stime = time()
-    print(now_short)
-    pre_input = input()
-    etime = time()
-    pre_short = now_short
+    for i in range(len(short) + 1):
+        if short[i:i + 1] == ipt[i:i + 1]:
+            print(f"{ipt[i:i + 1]}", end='')
+        else:
+            print('\033[31m%s\033[0m' % ipt[i:i + 1], end='')
 
-    # replit.clear() #  linux, unix
-    # os.system('cls') # window
+    print('')
 
-    while 1:
+def short(short, lan):
 
-        print("\n==================\033[032mprevious\033[0m===============")
-        print(pre_short)
+    for i in range(5):
 
-        for i in range(len(pre_short) + 1):
-            if pre_short[i:i + 1] == pre_input[i:i + 1]:
-                print(f"{pre_input[i:i + 1]}", end='')
-            else:
-                print('\033[31m%s\033[0m' % pre_input[i:i + 1], end='')
+        print("=========================================")
 
-        cor_per = correct(pre_short, pre_input, lan) / (len(decompose(pre_short, compose_code='')) + 1) * 100
-        spd = (correct(pre_short, pre_input, lan) / (etime-stime)) * 60
+        stime = time()
+        print(short)
+        ipt = input()
+        etime = time()
+
+        os.system('cls')
+
+        red(short, ipt)
+
+        cor_per = correct(short, ipt, lan) / (len(decompose(short, compose_code='')) + 1) * 100
+        spd = ((correct(short, ipt, lan))/ (etime-stime)) * 60
 
         print(f"\n\n걸린 시간 : {(etime - stime):.1f} \n정확도 : {cor_per:.1f} \n속도 : {spd:.1f}")
 
-        print("===================\033[04m\033[34mnow\033[0m===================")
-        print(now_short)
-        stime = time()
-        now_input = input()
-        etime = time()
+        sleep(1.5)
+        if lan == 'ko':
+            short = random.choice(ko_srt)
+        elif lan == 'en':
+            short = random.choice(srt)
 
-        pre_input = now_input
-        pre_short = now_short
-
-        # if lan == "ko":
-        #     now_short = choice(ko_srt)
-        # elif lan == "en":
-        #     now_short = choice(srt)
-
-        # replit.clear()
         os.system('cls')
 
 '''while 1:
