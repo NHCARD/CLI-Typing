@@ -13,7 +13,7 @@ from long import def_anthem, long
 
 lan = 'ko'
 
-def Word(previous, n, nxt, Pinput):
+def word(previous, n, nxt, Pinput):
 
     while 1:
 
@@ -89,9 +89,9 @@ def Start():
             os.system('cls')
 
             if lan == 'ko':
-                Word('', choice(ko_Word), choice(ko_Word), '')
+                word('', choice(ko_Word), choice(ko_Word), '')
             elif lan == 'en':
-                Word('', choice(Word), choice(Word), '')
+                word('', choice(Word), choice(Word), '')
         case '2':
             print('짧은글 선택')
 
