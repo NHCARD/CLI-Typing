@@ -3,3 +3,8 @@ ko_Word = ['닭', '한글', '세종대왕', '코코팜', '부채', '연필', '�
 
 for i in Word:
     print(len(i))
+
+import keyboard
+
+while 1:
+    print(keyboard.read_key())
