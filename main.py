@@ -1,7 +1,6 @@
 # from keyboard import read_key
 from time import sleep
 
-import keyboard
 from random import choice
 import os
 # import replit
@@ -49,11 +48,11 @@ def word(previous, n, nxt, Pinput):
                 if previous == Pinput:
                     print(previous, end='')
                 elif previous != Pinput:
-                     for j in range(len(previous) + 1):
-                         if previous[j:j+1] != Pinput[j:j+1]:
-                             print('\033[31m%s\033[0m' % (Pinput[j:j+1]), end='')
-                         elif previous[j:j+1] == Pinput[j:j+1]:
-                             print(Pinput[j:j+1], end='')
+                    for j in range(len(previous) + 1):
+                        if previous[j:j+1] != Pinput[j:j+1]:
+                            print('\033[31m%s\033[0m' % (Pinput[j:j+1]), end='')
+                        elif previous[j:j+1] == Pinput[j:j+1]:
+                            print(Pinput[j:j+1], end='')
 
             elif i == 1:
                 if lan == 'en':
