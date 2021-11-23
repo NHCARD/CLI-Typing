@@ -1,6 +1,6 @@
 import os
 import random
-from time import time, sleep
+from time import time
 
 # import replit
 # import keyboard
@@ -81,15 +81,16 @@ def short(short, lan):
 
         print(f"\n\n걸린 시간 : {(etime - stime):.1f} \n정확도 : {cor_per:.1f} \n속도 : {spd:.1f}")
 
+        print('=====================================================')
+        print('계속 하려면 \033[36m엔터\033[0m를, 메뉴로 돌아가려면  \033[36mESC\033[0m를 누르시오')
         while 1:
-            if keyboard.is_pressed('enter') == True:
+            if keyboard.is_pressed('enter'):
                 input()
                 break
-            elif keyboard.is_pressed('2') == True:
+            elif keyboard.is_pressed('esc'):
                 os.system('cls')
                 return
 
-        sleep(2.5)
         if lan == 'ko':
             short = random.choice(ko_srt)
         elif lan == 'en':
