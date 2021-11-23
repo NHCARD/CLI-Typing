@@ -13,7 +13,7 @@ from long import def_anthem, long
 
 lan = 'ko'
 
-def Word(previous, n, nxt, Pinput):
+def word(previous, n, nxt, Pinput):
 
     while 1:
 
@@ -22,14 +22,25 @@ def Word(previous, n, nxt, Pinput):
         print('previous        now        next')
 
         for i in range(3):
-            if i == 0:
+            if i == 0 and lan == 'en':
                 print(previous, end='')
-            elif i == 1:
+            elif i == 1 and lan == 'en':
                 for j in range(16 - len(previous)):
                     print(' ', end='')
                 print(n, end='')
-            elif i == 2:
+            elif i == 2 and lan == 'en':
                 for j in range(11 - (len(n))):
+                    print(' ', end='')
+                print(nxt)
+
+            if i == 0 and lan == 'ko':
+                print(previous, end='')
+            elif i == 1 and lan == 'ko':
+                for j in range(16 - int((len(previous)*2))):
+                    print(' ', end='')
+                print(n, end='')
+            elif i == 2 and lan == 'ko':
+                for j in range(11 - (int(len(n)*2))):
                     print(' ', end='')
                 print(nxt)
 
@@ -45,8 +56,12 @@ def Word(previous, n, nxt, Pinput):
                              print(Pinput[j:j+1], end='')
 
             elif i == 1:
-                for j in range(16 - len(previous)):
-                    print(' ', end='')
+                if lan == 'en':
+                    for j in range(16 - len(previous)):
+                        print(' ', end='')
+                elif lan == 'ko':
+                    for j in range(16 - (len(previous)*2)):
+                        print(' ', end='')
 
                 Nwinput = input()
 
@@ -54,7 +69,7 @@ def Word(previous, n, nxt, Pinput):
 
         # print('종료하려면 ESC를 누르십시오')
 
-        Pinput = Nwinput
+        Pinput = Nwinput[:len(n)]
         previous = n
         n = nxt
 
@@ -86,9 +101,9 @@ def Start():
             os.system('cls')
 
             if lan == 'ko':
-                Word('', choice(ko_Word), choice(ko_Word), '')
+                word('', choice(ko_Word), choice(ko_Word), '')
             elif lan == 'en':
-                Word('', choice(Word), choice(Word), '')
+                word('', choice(Word), choice(Word), '')
         case '2':
             print('짧은글 선택')
 
