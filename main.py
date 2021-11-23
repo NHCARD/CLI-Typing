@@ -1,11 +1,12 @@
 # from keyboard import read_key
 from time import sleep
-import word as wd
+
+import keyboard
 from random import choice
 import os
 # import replit
 from short import short
-from articloid import ko_srt, srt, counting_star, gold_axe, narcissus
+from articloid import ko_srt, srt, counting_star, gold_axe, narcissus, Word, ko_Word
 from long import def_anthem, long
 
 # global Nwinput
@@ -15,6 +16,9 @@ lan = 'ko'
 def Word(previous, n, nxt, Pinput):
 
     while 1:
+
+        if keyboard.read_key() == '1':
+            return 1
 
         print('=====================================')
 
@@ -58,9 +62,9 @@ def Word(previous, n, nxt, Pinput):
         n = nxt
 
         if lan == 'ko':
-            nxt = choice(wd.ko_Word)
+            nxt = choice(ko_Word)
         elif lan == 'en':
-            nxt = choice(wd.Word)
+            nxt = choice(Word)
         # sleep(1)
         # replit.clear()
         os.system('cls')
@@ -78,17 +82,20 @@ def Start():
 
     match a:
         case '1':
-            print('낱말 연습을 선택하였습니다.')
+            print('낱말 선택')
             sleep(1.5)
 
             # replit.clear()
             os.system('cls')
 
             if lan == 'ko':
-                Word('', choice(wd.ko_Word), choice(wd.ko_Word), '')
+                Word('', choice(ko_Word), choice(ko_Word), '')
             elif lan == 'en':
-                Word('', choice(wd.Word), choice(wd.Word), '')
+                Word('', choice(Word), choice(Word), '')
         case '2':
+            print('짧은글 선택')
+
+            sleep(1.5)
 
             if lan == "ko":
                 # replit.clear()
@@ -103,6 +110,9 @@ def Start():
             # replit.clear()
             os.system('cls')
         case '3':
+            print('긴글 선택')
+
+            sleep(1.5)
             os.system('cls')
             long_choice(lan)
         case '4':
