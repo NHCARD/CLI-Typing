@@ -14,32 +14,29 @@ lan = 'ko'
 
 def word(previous, n, nxt, Pinput):
 
+    global n_space, nxt_space, Nwinput
     while 1:
 
         print('=====================================')
 
         print('previous        now        next')
 
-        for i in range(3):
-            if i == 0 and lan == 'en':
-                print(previous, end='')
-            elif i == 1 and lan == 'en':
-                for j in range(16 - len(previous)):
-                    print(' ', end='')
-                print(n, end='')
-            elif i == 2 and lan == 'en':
-                for j in range(11 - (len(n))):
-                    print(' ', end='')
-                print(nxt)
+        if lan == 'en':
+            n_space = len(previous)
+            nxt_space = len(n)
+        elif lan == 'ko':
+            n_space = len(previous)*2
+            nxt_space = len(n)*2
 
-            if i == 0 and lan == 'ko':
+        for i in range(3):
+            if i == 0:
                 print(previous, end='')
-            elif i == 1 and lan == 'ko':
-                for j in range(16 - int((len(previous)*2))):
+            elif i == 1:
+                for j in range(16 - n_space):
                     print(' ', end='')
                 print(n, end='')
-            elif i == 2 and lan == 'ko':
-                for j in range(11 - (int(len(n)*2))):
+            elif i == 2:
+                for j in range(11 - nxt_space):
                     print(' ', end='')
                 print(nxt)
 
