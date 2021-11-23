@@ -2,9 +2,9 @@ import os
 
 # import replit
 
-from articloid import national_anthem, counting_star, gold_axe
-
 from short import correct
+
+from articloid import national_anthem
 
 from hgtk.text import decompose
 
