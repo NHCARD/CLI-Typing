@@ -8,7 +8,7 @@ from short import correct
 
 from hgtk.text import decompose
 
-from time import time
+from time import time, sleep
 
 def an_previous(list1, original, classify, page_num, line_num):
     # noinspection SpellCheckingInspection
@@ -82,8 +82,6 @@ def def_anthem(num):
             length += len(decompose(national_anthem[i], compose_code=''))
 
         print(f"시간 :{etime-stime:.1f}")
-        print(length)
-        print(cor_count-4)
         cor_per = ((cor_count-4) / length) * 100
         spd = (cor_count-4) / (etime - stime) * 60
         print(f"속도 : {spd:.1f}")
@@ -156,15 +154,14 @@ def long(num, lan, title):
                 print("========================================================")
 
                 line_etime = time() - line_stime
-                print(f'시간 : {line_etime:.1f}')
+                print(f'페이지 시간 : {line_etime:.1f}')
                 line_cor_per = (cor_count-4) / line_length * 100
-                print(f'정확도 : {line_cor_per:.1f}')
+                print(f'페이지 정확도 : {line_cor_per:.1f}')
                 spd = (cor_count-4) / line_etime * 60
-                print(f'속도 : {spd:.1f}')
+                print(f'페이지 속도 : {spd:.1f}')
 
                 total_cor += cor_count
                 total_len += line_length
-
                 total_time += line_etime
                 total_spd = (total_cor-i) / total_len * 60
 
@@ -172,16 +169,23 @@ def long(num, lan, title):
 
                 while 1:
 
-                    ques = input("계속 하시겠습니까?\n1. yes\n2.no\n")
+                    if line_num < page_num:
+                        ques = input("계속 하시겠습니까?\n1. yes\n2.no\n")
+                    elif line_num == page_num:
+                        sleep(2)
+                        os.system('cls')
+                        end(total_time, total_cor, total_len, total_spd, i)
+                        return
 
-                    print(ques)
+                    # print(ques)
 
                     if ques == '1':
+                        cor_count = 0
+                        os.system('cls')
                         break
                     elif ques == '2':
-                        print(f"총 시간 : {total_time:.1f}")
-                        print(f'총 정확도 : {((total_cor-i) / total_len * 100):.1f}')
-                        print(f'총 속도 : {total_spd:.1f}')
+                        os.system('cls')
+                        end(total_time, total_cor, total_len, total_spd, i)
                         return
 
                 list1 = []
@@ -189,7 +193,7 @@ def long(num, lan, title):
 
                 os.system('cls')
 
-                if i <= page_num:
+                if line_num + 1 <= page_num:
                     print(f"================ {line_num + 1} / {page_num} ================")
 
 # def_anthem(1)
@@ -197,4 +201,9 @@ def long(num, lan, title):
 # long(1, 'ko')
 
 # print(len(counting_star[1]))
+
+def end(time, cor, len, spd, i):
+    print(f"총 시간 : {time:.1f}")
+    print(f'총 정확도 : {((cor - i) / len * 100):.1f}')
+    print(f'총 속도 : {spd:.1f}')
 
