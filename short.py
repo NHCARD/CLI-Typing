@@ -8,6 +8,17 @@ import keyboard
 from hgtk.text import decompose
 from articloid import srt, ko_srt
 
+def hyphen(short, lan):
+    global hy_len
+    if lan == 'ko':
+        hy_len = (len(short) * 2 - 7)
+    elif lan == 'en':
+        hy_len = len(short)
+
+    for i in range(hy_len):
+        print('=', end='')
+    print('')
+
 
 def correct(short, ipt, lan):
 
@@ -28,10 +39,14 @@ def correct(short, ipt, lan):
             if short[i:i+1] == ipt[i:i+1]:
                 cor_count += 1
 
-    return cor_count-1
+    if lan == 'ko':
+        return cor_count-1
+    elif lan == 'en':
+        return  cor_count
 
-def red(short, ipt):
+def red(short, ipt, lan):
 
+    hyphen(short, lan)
     print(short)
 
     for i in range(len(short) + 1):
@@ -44,9 +59,13 @@ def red(short, ipt):
 
 def short(short, lan):
 
-    for i in range(5):
+    for i in range(999999):
 
-        print("=========================================")
+        # if i != 0:
+        #     ipt = input()
+        #     os.system('cls')
+
+        hyphen(short, lan)
 
         stime = time()
         print(short)
@@ -55,14 +74,22 @@ def short(short, lan):
 
         os.system('cls')
 
-        red(short, ipt)
+        red(short, ipt, lan)
 
         cor_per = correct(short, ipt, lan) / (len(decompose(short, compose_code='')) + 1) * 100
         spd = ((correct(short, ipt, lan))/ (etime-stime)) * 60
 
         print(f"\n\n걸린 시간 : {(etime - stime):.1f} \n정확도 : {cor_per:.1f} \n속도 : {spd:.1f}")
 
-        sleep(1.5)
+        while 1:
+            if keyboard.is_pressed('enter') == True:
+                input()
+                break
+            elif keyboard.is_pressed('2') == True:
+                os.system('cls')
+                return
+
+        sleep(2.5)
         if lan == 'ko':
             short = random.choice(ko_srt)
         elif lan == 'en':
