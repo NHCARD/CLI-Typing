@@ -61,10 +61,6 @@ def short(short, lan):
 
     for i in range(999999):
 
-        # if i != 0:
-        #     ipt = input()
-        #     os.system('cls')
-
         hyphen(short, lan)
 
         stime = time()
@@ -97,28 +93,6 @@ def short(short, lan):
             short = random.choice(srt)
 
         os.system('cls')
-
-'''while 1:
-
-    print("언어를 선택하시오\n1. ko\n2.en")
-    lan = input()
-
-    if lan == "1":
-        replit.clear()
-        os.system('cls')
-        short(choice(ko_srt), 'ko')
-
-    elif lan == "2":
-        replit.clear()
-        os.system('cls')
-        short(choice(srt), 'en')'''
-
-'''lan = 'ko'
-
-if lan == "ko":
-    short(choice(ko_srt), lan)
-elif lan == "en":
-    short(choice(srt), lan)'''
 
 # print(f'{"previous":<10}', end='')
 # print(f'{"now":^10}', end='')
