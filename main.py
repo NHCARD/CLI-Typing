@@ -80,65 +80,7 @@ def word(previous, n, nxt, pinput):
         # replit.clear()
         os.system('cls') # 터미널 지우개
 
-def Start(): # 메인
 
-   while 1:
-        print(" \n\033[31m 고르시오 \033[0m ")
-        print("1. 낱말")
-        print("2. 짧은글")
-        print("3. 긴글")
-        print("4. \033[33/m언어 선택\033[0m")
-        print('\n5. 종료')
-        print(f"\033[36m----------------\033[0m\n현재 언어 : {lan}")
-
-        a = input()
-
-        match a:
-            case '1': # 입력값이 1일때
-                print('낱말 선택')
-                sleep(1.5)
-
-                # replit.clear()
-                os.system('cls')
-
-                if lan == 'ko': # 언어가 한글이면 한글 단어
-                    word('', choice(ko_Word), choice(ko_Word), '')
-                elif lan == 'en': #언어가 영어면 영어 단어
-                    word('', choice(Word), choice(Word), '')
-            case '2': # 입력값이 2일때
-                print('짧은글 선택')
-
-                sleep(1.5)
-
-                if lan == "ko": # 언어가 한글이면
-                    # replit.clear()
-                    os.system('cls')
-                    short(choice(ko_srt), 'ko') # short 함수 호출
-
-                elif lan == "en": # 언어가 영어면
-                    # replit.clear()
-                    os.system('cls')
-                    short(choice(srt), 'en') # short 함수 호출
-
-            case '3': # 입력값이 3일때
-                print('긴글 선택')
-
-                sleep(1.5)
-                os.system('cls')
-                long_choice(lan) # 긴글 선택 함수
-            case '4': # 입력값이 4일때
-                os.system('cls')
-                # replit.clear()
-
-                lan_choice() # 언어 선택 함수 호출
-            case '5': # 입력값이 5일때 메인 실행파일 호출하고 파이썬 파일 종료
-                os.system("C:\\Users\\inuri64\\source\\repos\\final\\x64\Release\\final.exe")
-                break
-            case _: # 1, 2, 3, 4, 5를 제외한 나머지를 입력한 경우
-                # replit.clear()
-                os.system('cls')
-                print("\033[31m1, 2, 3, 4중 선택\033[0m")
-                continue # 반복문 시작점으로 보냄
 
 def lan_choice():
     # replit.clear()    os.system('cls')
@@ -154,12 +96,12 @@ def lan_choice():
             lan = "ko" # 한글로 설정
             # replit.clear()
             os.system('cls')
-            Start() # start 함수 호출
+             # start 함수 호출
         case '2': # 입력값이 2인 경우
             lan = "en" # 영어로 설정
             # replit.clear()
             os.system('cls')
-            Start() # start 함수 호출
+             # start 함수 호출
         case _:
             lan_choice() # 1, 2 외에 입력시 언어 선택 함수 재 호출
 
@@ -175,7 +117,7 @@ def long_choice(lan):
         match long_ipt:
             case '1':
                 os.system('cls')
-                def_anthem(1)
+                def_anthem(1, lan)
             case '2':
                 os.system('cls')
                 long(1, lan, counting_star)
@@ -200,19 +142,60 @@ def long_choice(lan):
                 long_choice(lan)
 
 
+while 1:
+    print(" \n\033[31m 고르시오 \033[0m ")
+    print("1. 낱말")
+    print("2. 짧은글")
+    print("3. 긴글")
+    print("4. \033[33/m언어 선택\033[0m")
+    print('\n5. 종료')
+    print(f"\033[36m----------------\033[0m\n현재 언어 : {lan}")
 
+    a = input()
 
-    '''if keyboard.read_key() == "1":
-        print("낱말 연습 선택")
-        # word()
-        break
-    elif keyboard.read_key() == "2":
-        print("짧은글 연습 선택")
-        # short()
-        break
-    elif keyboard.read_key() == "3":
-        print("긴글 연습 선택")
-        # long()
-        break'''
+    match a:
+        case '1': # 입력값이 1일때
+            print('낱말 선택')
+            sleep(1.5)
 
-Start()
+                # replit.clear()
+            os.system('cls')
+
+            if lan == 'ko': # 언어가 한글이면 한글 단어
+                word('', choice(ko_Word), choice(ko_Word), '')
+            elif lan == 'en': #언어가 영어면 영어 단어
+                word('', choice(Word), choice(Word), '')
+        case '2': # 입력값이 2일때
+            print('짧은글 선택')
+
+            sleep(1.5)
+
+            if lan == "ko": # 언어가 한글이면
+                    # replit.clear()
+                os.system('cls')
+                short(choice(ko_srt), 'ko') # short 함수 호출
+
+            elif lan == "en": # 언어가 영어면
+                    # replit.clear()
+                os.system('cls')
+                short(choice(srt), 'en') # short 함수 호출
+
+        case '3': # 입력값이 3일때
+            print('긴글 선택')
+
+            sleep(1.5)
+            os.system('cls')
+            long_choice(lan) # 긴글 선택 함수
+        case '4': # 입력값이 4일때
+            os.system('cls')
+                # replit.clear()
+
+            lan_choice() # 언어 선택 함수 호출
+        case '5': # 입력값이 5일때 메인 실행파일 호출하고 파이썬 파일 종료
+            os.system("C:\\Users\\inuri64\\source\\repos\\final\\x64\Release\\final.exe")
+            break
+        case _: # 1, 2, 3, 4, 5를 제외한 나머지를 입력한 경우
+                # replit.clear()
+            os.system('cls')
+            print("\033[31m1, 2, 3, 4중 선택\033[0m")
+            continue # 반복문 시작점으로 보냄

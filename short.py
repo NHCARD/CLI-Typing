@@ -3,64 +3,16 @@ import random
 from time import time
 
 # import replit
-# import keyboard
-import keyboard
+
 from hgtk.text import decompose
 from articloid import srt, ko_srt
-
-def hyphen(short, lan):
-    global hy_len
-    if lan == 'ko':
-        hy_len = (len(short) * 2 - 7)
-    elif lan == 'en':
-        hy_len = len(short)
-
-    for i in range(hy_len):
-        print('=', end='')
-    print('')
-
-
-def correct(short, ipt, lan):
-
-    cor_count = 0
-
-    if lan == 'ko':
-        sep_srt = decompose(short, compose_code='')
-        sep_ipt = decompose(ipt, compose_code='')
-
-        # print(sep_srt)
-
-        for i in range(len(sep_srt)+1):
-            if sep_srt[i:i+1] == sep_ipt[i:i+1]:
-                cor_count += 1
-
-    else:
-        for i in range(len(short)):
-            if short[i:i+1] == ipt[i:i+1]:
-                cor_count += 1
-
-    if lan == 'ko':
-        return cor_count-1
-    elif lan == 'en':
-        return  cor_count
-
-def red(short, ipt, lan):
-
-    hyphen(short, lan)
-    print(short)
-
-    for i in range(len(short) + 1):
-        if short[i:i + 1] == ipt[i:i + 1]:
-            print(f"{ipt[i:i + 1]}", end='')
-        else:
-            print('\033[31m%s\033[0m' % ipt[i:i + 1], end='')
-
-    print('')
+from fun import red
+from fun import correct
+from fun import hyphen
 
 def short(short, lan):
 
-    for i in range(999999):
-
+    while 1:
         hyphen(short, lan)
 
         stime = time()
@@ -70,7 +22,7 @@ def short(short, lan):
 
         os.system('cls')
 
-        red(short, ipt, lan)
+        red(short, ipt, lan, 'short')
 
         cor_per = correct(short, ipt, lan) / (len(decompose(short, compose_code='')) + 1) * 100
         spd = ((correct(short, ipt, lan))/ (etime-stime)) * 60
@@ -78,22 +30,29 @@ def short(short, lan):
         print(f"\n\n걸린 시간 : {(etime - stime):.1f} \n정확도 : {cor_per:.1f} \n속도 : {spd:.1f}")
 
         print('=====================================================')
-        print('계속 하려면 \033[36m엔터\033[0m를, 메뉴로 돌아가려면  \033[36mESC\033[0m를 누르시오')
-        while 1:
-            if keyboard.is_pressed('enter'):
-                input()
-                break
-            elif keyboard.is_pressed('esc'):
-                os.system('cls')
-                return
+        print('계속 하려면 \033[36my 또는 ㅇ\033[0m을, 메뉴로 돌아가려면  \033[36mn 또는 ㄴ\033[0m을 누르시오')
 
         if lan == 'ko':
             short = random.choice(ko_srt)
         elif lan == 'en':
             short = random.choice(srt)
 
-        os.system('cls')
+        while 1:
+            a = input()
 
-# print(f'{"previous":<10}', end='')
-# print(f'{"now":^10}', end='')
-# print(f'{"next":>10}')
+            if a == 'n':
+                os.system('cls')
+                return
+            elif a == 'y':
+                os.system('cls')
+                break
+            elif a == 'ㅇ':
+                os.system('cls')
+                break
+            elif a == 'ㄴ':
+                os.system('cls')
+                return
+            else:
+                print('\033[31my or ㅇ or n or ㄴ 만 누르시오\033[0m')
+
+        os.system('cls')

@@ -11,27 +11,16 @@ from hgtk.text import decompose
 
 from time import time, sleep
 
-def an_previous(list1, original, classify, page_num, line_num):
+from fun import  red
+
+def an_previous(list1, original, page_num, line_num, lan):
     # noinspection SpellCheckingInspection
-    if classify == 'long':
+    if page_num != '':
         print(f"================ {line_num + 1} / {page_num} ================")
 
-    for j in range(len(list1)):
-        # print(len(list1))
+    red(original, list1, lan, 'long')
 
-        print(f'\033[36m{original[j]}\033[0m')
-        # print(f'list1: {list1}')
-
-        for k in range(len(original[j]) + 1):
-
-            if original[j][k:k + 1] == list1[j][k:k + 1]:
-                print(list1[j][k:k + 1], end='')
-            elif original[j][k:k + 1] != list1[j][k:k + 1]:
-                print(f"\033[31m{list1[j][k:k + 1]}\033[0m", end='')
-
-        print('')
-
-def def_anthem(num):
+def def_anthem(num, lan):
 
     global etime
     if num == 1:
@@ -58,7 +47,7 @@ def def_anthem(num):
 
                     if i == 1 or 2 or 3:
 
-                        an_previous(list1, national_anthem, 'anthem', '', '')
+                        an_previous(list1, national_anthem, '', '', lan)
 
                         print(f'\033[36m{national_anthem[i]}\033[0m')
                         ipt = input()
@@ -69,7 +58,7 @@ def def_anthem(num):
                         # replit.clear()
                         os.system('cls')
 
-                        an_previous(list1, national_anthem, 'anthem', '', '')
+                        an_previous(list1, national_anthem, '', '', lan)
                         print('------------------------')
 
         cor_count = 0
@@ -152,7 +141,7 @@ def long(num, lan, title):
             # print(list1)
 
             os.system('cls')
-            an_previous(list1, original1, 'long', page_num, line_num)
+            an_previous(list1, original1, page_num, line_num, lan)
             cor_count += correct(title[1][i*22:i*22+22], ipt, lan)
             line_length += len(decompose(title[1][i*22:i*22+22], compose_code=''))
 
@@ -161,15 +150,15 @@ def long(num, lan, title):
 
                 line_etime = time() - line_stime
                 print(f'페이지 시간 : {line_etime:.1f}')
-                line_cor_per = (cor_count-4) / line_length * 100
+                line_cor_per = (cor_count) / line_length * 100
                 print(f'페이지 정확도 : {line_cor_per:.1f}')
-                spd = (cor_count-4) / line_etime * 60
+                spd = (cor_count) / line_etime * 60
                 print(f'페이지 속도 : {spd:.1f}')
 
                 total_cor += cor_count
                 total_len += line_length
                 total_time += line_etime
-                total_spd = (total_cor-i) / total_len * 60
+                total_spd = (total_cor) / total_len * 60
 
                 line_num += 1
 
@@ -220,6 +209,6 @@ def long(num, lan, title):
 
 def end(time, cor, len, spd, i):
     print(f"총 시간 : {time:.1f}")
-    print(f'총 정확도 : {((cor - i) / len * 100):.1f}')
+    print(f'총 정확도 : {((cor) / len * 100):.1f}')
     print(f'총 속도 : {spd:.1f}')
 
