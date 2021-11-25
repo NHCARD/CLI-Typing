@@ -12,10 +12,9 @@ lan = 'ko'
 
 # 단어 출력 기능
 def word(previous, n, nxt, pinput, num):
-    j = 0
 
     global n_space, nxt_space, nwinput
-    while int(num) >= j:
+    for j in range(int(num)):
 
         print('=====================================')
         print(j)
@@ -171,7 +170,7 @@ while 1:
             if lan == 'ko': # 언어가 한글이면 한글 단어
                 word('', choice(ko_Word), choice(ko_Word), '', num)
             elif lan == 'en': #언어가 영어면 영어 단어
-                word('', choice(Word), choice(Word), '')
+                word('', choice(Word), choice(Word), '', num)
         case '2': # 입력값이 2일때
             print('짧은글 선택')
 
@@ -199,7 +198,8 @@ while 1:
 
             lan_choice() # 언어 선택 함수 호출
         case '5': # 입력값이 5일때 메인 실행파일 호출하고 파이썬 파일 종료
-            os.system("C:\\Users\\inuri64\\source\\repos\\final\\x64\Release\\final.exe")
+            # c실행파일 경로
+            # os.system("C:\\Users\\inuri64\\source\\repos\\final\\x64\Release\\final.exe")
             break
         case _: # 1, 2, 3, 4, 5를 제외한 나머지를 입력한 경우
                 # replit.clear()
