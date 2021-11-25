@@ -11,13 +11,14 @@ from long import def_anthem, long
 lan = 'ko'
 
 # 단어 출력 기능
-def word(previous, n, nxt, pinput):
+def word(previous, n, nxt, pinput, num):
+    j = 0
 
     global n_space, nxt_space, nwinput
-    while 1:
+    while int(num) >= j:
 
         print('=====================================')
-
+        print(j)
         print('previous        now        next')
 
         if lan == 'en':
@@ -78,6 +79,10 @@ def word(previous, n, nxt, pinput):
             nxt = choice(Word) # 영어 단어를 랜덤으로 넣기
         # sleep(1)
         # replit.clear()
+
+        j += 1
+        print(j)
+
         os.system('cls') # 터미널 지우개
 
 
@@ -161,8 +166,10 @@ while 1:
                 # replit.clear()
             os.system('cls')
 
+            num = input('반복 횟수 입력 : ')
+
             if lan == 'ko': # 언어가 한글이면 한글 단어
-                word('', choice(ko_Word), choice(ko_Word), '')
+                word('', choice(ko_Word), choice(ko_Word), '', num)
             elif lan == 'en': #언어가 영어면 영어 단어
                 word('', choice(Word), choice(Word), '')
         case '2': # 입력값이 2일때

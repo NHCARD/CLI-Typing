@@ -72,8 +72,8 @@ def def_anthem(num, lan):
             length += len(decompose(national_anthem[i], compose_code=''))
 
         print(f"시간 :{etime-stime:.1f}")
-        cor_per = ((cor_count-4) / length) * 100
-        spd = (cor_count-4) / (etime - stime) * 60
+        cor_per = ((cor_count) / length) * 100
+        spd = (cor_count) / (etime - stime) * 60
         print(f"속도 : {spd:.1f}")
 
         print(f'정확도 : {cor_per:.1f}%')
