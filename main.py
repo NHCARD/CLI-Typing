@@ -12,10 +12,9 @@ lan = 'ko'
 
 # 단어 출력 기능
 def word(previous, n, nxt, pinput, num):
-    j = 0
 
     global n_space, nxt_space, nwinput
-    while int(num) >= j:
+    for j in range(int(num)):
 
         print('=====================================')
         print(j)
@@ -166,12 +165,18 @@ while 1:
                 # replit.clear()
             os.system('cls')
 
-            num = input('반복 횟수 입력 : ')
+            try:
+                num = int(input())
+            except:
+                print("숫자만 가능")
+                sleep(1.5)
+                os.system('cls')
+                continue
 
             if lan == 'ko': # 언어가 한글이면 한글 단어
                 word('', choice(ko_Word), choice(ko_Word), '', num)
             elif lan == 'en': #언어가 영어면 영어 단어
-                word('', choice(Word), choice(Word), '')
+                word('', choice(Word), choice(Word), '', num)
         case '2': # 입력값이 2일때
             print('짧은글 선택')
 
