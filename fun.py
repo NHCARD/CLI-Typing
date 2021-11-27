@@ -65,4 +65,3 @@ def correct(short, ipt, lan):
         return cor_count-1
     elif lan == 'en':
         return  cor_count
-
