@@ -39,6 +39,15 @@ def red(short, ipt, lan, classify):
             elif short[i:i + 1] != ipt[i:i + 1]:
                 print('\033[31m%s\033[0m' % ipt[i:i + 1], end='')
 
+    elif classify == 'word':
+        for i in range(len(short) + 1):
+            if short[i:i+1] == ipt[i:i+1]:
+                print(ipt[i:i+1], end='')
+            elif short[i:i+1] != ipt[i:i+1]:
+                print(f'\033[31m{ipt[i:i+1]}\033[0m', end='')
+
+        return
+
     print('')
 
 
