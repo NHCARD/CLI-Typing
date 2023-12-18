@@ -1,5 +1,5 @@
 Word = ['mouse', 'cat', 'dog', 'fox', 'wolf', 'snack', 'monitor', 'water', 'math', 'science', 'immune', 'EpikHigh','data','milk', 'human', 'science', 'math', 'water', 'chocolate', 'lilac', 'summer', 'spring', 'winter', 'fall']
-ko_Word = ['닭', '한글', '세종대왕', '코코팜', '부채', '연필', '필통', '과자', '배배', '지우개', '종이', '단짝', '책', '모니터', '선풍기', '에어컨', '가방', '미적분', '창의공학설계', '수학', '물리학', '재미', '안약', '이어폰']
+ko_Word = ['닭', '한글', '세종대왕', '코코팜', '부채', '연필', '필통', '과자', '배배', '지우개', '종이', '단짝', '책', '모니터', '선풍기', '에어컨', '가방', '미적분', '수학', '물리학', '재미', '안약', '이어폰']
 
 srt = ['Wealth bring with it many anxieties.', 'There is nothing either good or bad but thinking makes it so.', 'Though she be but little, she is fierce.']
 ko_srt = ['덕이 없는 아름다움은 향기 없는 꽃이다.', '나는 완고한 덕보다는 융통성이 있는 악덕을 좋아한다.', '기둥이 약하면 집이 흔들리듯 의지가 약하면 생활도 휘청거린다.', '상황은 사람을 구속하지 않는다. 단지 그 사람의 됨됨이를 드러내줄 뿐이다.']
