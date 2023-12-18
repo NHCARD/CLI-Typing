@@ -166,7 +166,13 @@ while 1:
                 # replit.clear()
             os.system('cls')
 
-            num = input('반복 횟수 입력 : ')
+            try:
+                num = int(input())
+            except:
+                print("숫자만 가능")
+                sleep(1.5)
+                os.system('cls')
+                continue
 
             if lan == 'ko': # 언어가 한글이면 한글 단어
                 word('', choice(ko_Word), choice(ko_Word), '', num)
